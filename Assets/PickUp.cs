@@ -4,24 +4,24 @@ using UnityEngine;
 
 public class PickUp : MonoBehaviour {
 
+    public GameObject collectible;
+
 	// Use this for initialization
 	void Start () {
-		
+		collectible.SetActive(true);
 	}
 	
 	// Update is called once per frame
 	void Update () {
-        
+        collectible.transform.Rotate(new Vector3(1f, 1f, 1f));
 	}
 
     private void OnTriggerEnter(Collider other)
     {
         if (other.tag == "Player")
         {
-            
-            BallController ballController = other.GetComponent<BallController>();
-            ballController.score += 1;
-            Destroy(gameObject);
+            BallController.score += 1;
+            collectible.SetActive(false);
         }
     }
 

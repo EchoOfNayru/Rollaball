@@ -9,8 +9,9 @@ public class BallController : MonoBehaviour {
     public Rigidbody rb;
     public float speed;
     public float jumpStr;
-    public int score;
+    public static int score;
     public bool isGrounded;
+    public bool onRail;
     // Use this for initialization
     void Start() {
         score = 0;
@@ -34,8 +35,6 @@ public class BallController : MonoBehaviour {
 
         Debug.DrawLine(transform.position, transform.position + move, Color.green);
 
-        
-
         rb.AddForce(move * speed * Time.deltaTime);
 
         if (isGrounded)
@@ -44,11 +43,20 @@ public class BallController : MonoBehaviour {
             rb.AddForce(jumping * jumpStr, ForceMode.Impulse);
             isGrounded = false;
         }
+
+        onRail = false;
     }
 
-    private void OnCollisionStay()
+    private void OnCollisionEnter()
+    {
+       
+    }
+    private void OnCollisionStay(Collision collision)
     {
         Debug.Log("happened");
-        isGrounded = true;
+        if (collision.gameObject.tag == "floor")
+        {
+            isGrounded = true;
+        }
     }
 }

@@ -4,8 +4,18 @@ using UnityEngine;
 
 public class RespawnController : MonoBehaviour {
 
-	// Use this for initialization
-	void Start () {
+    public GameObject collectible1;
+    public GameObject collectible2;
+    public GameObject collectible3;
+    public GameObject collectible4;
+    public GameObject collectible5;
+    public GameObject collectible6;
+    public GameObject collectible7;
+    public GameObject collectible8;
+    public GameObject ScoreGate;
+
+    // Use this for initialization
+    void Start () {
 		
 	}
 	
@@ -22,6 +32,16 @@ public class RespawnController : MonoBehaviour {
             other.transform.position = spawn;
             BallController ballController = other.GetComponent<BallController>();
             ballController.rb.velocity = Vector3.zero;
+            BallController.score = 0;
+            collectible1.SetActive(true);
+            collectible2.SetActive(true);
+            collectible3.SetActive(true);
+            collectible4.SetActive(true);
+            collectible5.SetActive(true);
+            collectible6.SetActive(true);
+            collectible7.SetActive(true);
+            collectible8.SetActive(true);
+            ScoreGate.SetActive(true);
         }
     }
 }
