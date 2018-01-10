@@ -10,7 +10,7 @@ public class ScoreGate : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-        moveTo = transform.position + Vector3.up;
+        moveTo = transform.position + (Vector3.up * 5);
 	}
 	
 	// Update is called once per frame
