@@ -9,7 +9,7 @@ public class CameraFollow : MonoBehaviour {
 
 
     public float offset = 5;         //Private variable to store the offset distance between the player and camera
-    public Vector3 mouseRotation = Vector3.zero;
+    public Vector3 mouseRotation = new Vector3(45,90,0);
 
     // Use this for initialization
     void Start()
@@ -34,7 +34,7 @@ public class CameraFollow : MonoBehaviour {
         mouseRotation.y += Input.GetAxis("CameraX");
 
         this.transform.position = player.transform.position;
-        this.transform.rotation = Quaternion.Euler(mouseRotation.x, mouseRotation.y, 0);
+        this.transform.rotation = Quaternion.Euler(mouseRotation.x * 1.7f, mouseRotation.y * 1.7f, 0);
         this.transform.position -= transform.forward * offset;
 
         RaycastHit hitInfo;
