@@ -7,6 +7,7 @@ public class CameraFollow : MonoBehaviour {
     public GameObject player;       //Public variable to store a reference to the player game object
     public Camera cam;
 
+    public LayerMask collectibleLayer;
 
     public float offset = 5;         //Private variable to store the offset distance between the player and camera
     public Vector3 mouseRotation = new Vector3(45,90,0);
@@ -41,7 +42,7 @@ public class CameraFollow : MonoBehaviour {
 
         Debug.DrawLine(player.transform.position, transform.position, Color.green);
 
-        Physics.Linecast(player.transform.position, transform.position, out hitInfo);
+        Physics.Linecast(player.transform.position, transform.position, out hitInfo, ~collectibleLayer);
         if (hitInfo.transform != null)
         {
             Debug.Log("hit");

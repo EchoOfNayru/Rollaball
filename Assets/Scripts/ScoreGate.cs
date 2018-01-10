@@ -7,15 +7,17 @@ public class ScoreGate : MonoBehaviour {
     public GameObject BigDoor;
     Vector3 moveTo;
     public float lerpTime;
+    public int amountToUnlock;
+    public float unlockHeight;
 
 	// Use this for initialization
 	void Start () {
-        moveTo = transform.position + (Vector3.up * 5);
+        moveTo = transform.position + (Vector3.up * unlockHeight);
 	}
 	
 	// Update is called once per frame
 	void Update () {
-        if (BallController.score == 8)
+        if (BallController.score == amountToUnlock)
         {
             transform.position = Vector3.Lerp(transform.position, moveTo, lerpTime * Time.deltaTime);
         }

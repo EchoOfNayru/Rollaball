@@ -12,18 +12,26 @@ public class BallController : MonoBehaviour {
     public static int score;
     public bool isGrounded;
     public bool onRail;
+
+    float horizontal;
+    float vertical;
+    float jump;
     // Use this for initialization
     void Start() {
         score = 0;
     }
 
+    private void Update()
+    {
+        horizontal = Input.GetAxis("Horizontal");
+        vertical = Input.GetAxis("Vertical");
+        jump = Input.GetAxis("Jump");
+
+        Debug.Log(horizontal);
+    }
+
     // Update is called once per frame
     void FixedUpdate() {
-
-        float horizontal = Input.GetAxis("Horizontal");
-        float vertical = Input.GetAxis("Vertical");
-        float jump = Input.GetAxis("Jump");
-
         Vector3 move = new Vector3(horizontal, 0, -vertical);
 
         Debug.Log(move);
